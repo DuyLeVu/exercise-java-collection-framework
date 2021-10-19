@@ -47,9 +47,27 @@ public class ProductManager implements GeneralManagerService<Product> {
     }
 
     @Override
-    public void update(Product product, int id) {
+    public void update() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập Id sản phẩm cần sửa : ");
+        int id = sc.nextInt();
+        sc.nextLine();
         int index = findIndexById(id);
-        listProduct.set(index, product);
+        if (index == -1) System.out.println("Sản phẩm cần sửa không có trong danh sách");
+        else{
+            System.out.print("Nhập Id sản phẩm mới  : ");
+            int newId = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Nhập tên sản phẩm mới  : ");
+            String name = sc.nextLine();
+            System.out.print("Nhập giá:");
+            double price = sc.nextDouble();
+            sc.nextLine();
+            System.out.print("Nhập số lượng : ");
+            int amount = sc.nextInt();
+            sc.nextLine();
+            listProduct.set(index, new Product(newId, name, price, amount));
+        }
     }
 
     @Override
@@ -59,6 +77,8 @@ public class ProductManager implements GeneralManagerService<Product> {
         int id = sc.nextInt();
         sc.nextLine();
         int index = findIndexById(id);
+        if (index == -1) System.out.println("Sản phẩm cần xóa không có trong danh sách");
+        else
         listProduct.remove(index);
     }
 
@@ -73,12 +93,23 @@ public class ProductManager implements GeneralManagerService<Product> {
     public void findProductByName() {
         Scanner sc = new Scanner(System.in);
         String name;
-        System.out.print("Nhập tên sản phẩm cần sửa : ");
+        System.out.print("Nhập tên sản phẩm cần tìm : ");
         name = sc.nextLine();
+        boolean find = false;
+        int indexOf = -1;
         for (int i=0; i<listProduct.size(); i++){
-            if (listProduct.get(i).getName().equals(name)) System.out.println(listProduct.get(i));
+            if (listProduct.get(i).getName().equals(name)) {
+                find = true;
+                indexOf = i;
+                break;
+            }
         }
-    }
+        if (find)
+            System.out.println(listProduct.get(indexOf));
+        else {
+                System.out.println("Sản phẩm không có trong danh sách");
+            }
+        }
 
 
     @Override

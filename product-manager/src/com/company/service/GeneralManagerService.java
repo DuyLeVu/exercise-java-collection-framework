@@ -5,7 +5,7 @@ public interface GeneralManagerService<T> {
 
     int findIndexById(int id);
 
-    void update (T t, int id);
+    void update ();
 
     void delete();
 

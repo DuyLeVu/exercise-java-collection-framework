@@ -27,9 +27,12 @@ public class main {
                     productService.findProductByName();
                     break;
                 case 5:
-                    productService.sort();
+                    productService.update();
                     break;
                 case 6:
+                    productService.sort();
+                    break;
+                case 7:
                     productService.sortDESC();
                     break;
 
@@ -45,8 +48,9 @@ public class main {
         System.out.println("2. Xoá sản phẩm");
         System.out.println("3. Hiển thị danh sách sản phẩm");
         System.out.println("4. Tìm kiếm sản phẩm theo tên");
-        System.out.println("5. Sắp xếp sản phẩm tăng dần theo giá");
-        System.out.println("6. Sắp xếp sản phẩm giảm dần theo giá");
+        System.out.println("5. Sửa sản phẩm theo Id");
+        System.out.println("6. Sắp xếp sản phẩm tăng dần theo giá");
+        System.out.println("7. Sắp xếp sản phẩm giảm dần theo giá");
         System.out.println("0. Thoát");
 
     }
